@@ -1,12 +1,11 @@
-<div id="<%= dom_id article %>">
-  <div>
-    <strong>Title:</strong>
-    <%= article.title %>
+<article id="<%= dom_id article %>" class="article-card">
+  <div class="article-meta">
+    <span class="article-tag">ARTICLE</span>
+    <time datetime="<%= article.created_at.iso8601 %>"><%= article.created_at.strftime("%Y.%m.%d") %></time>
   </div>
-
-  <div>
-    <strong>Body:</strong>
-    <%= article.body %>
-  </div>
-
-</div>
+  <h3><%= article.title.presence || "タイトル未設定" %></h3>
+  <p><%= truncate(article.body.to_s, length: 110) %></p>
+  <%= link_to article, class: "article-link" do %>
+    記事を読む <span aria-hidden="true">&rarr;</span>
+  <% end %>
+</article>

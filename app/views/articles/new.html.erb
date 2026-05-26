@@ -1,11 +1,15 @@
-<% content_for :title, "New article" %>
+<% content_for :title, "新しい記事を書く | CodeShelf" %>
 
-<h1>New article</h1>
+<section class="editor-shell">
+  <header class="editor-header">
+    <p class="eyebrow">NEW TRANSMISSION</p>
+    <h1>新しい記事を書く</h1>
+    <p>あなたの発見を、次に学ぶ誰かへ届けましょう。</p>
+  </header>
 
-<%= render "form", article: @article %>
+  <%= render "form", article: @article %>
 
-<br>
-
-<div>
-  <%= link_to "Back to articles", articles_path %>
-</div>
+  <div class="editor-back">
+    <%= link_to "投稿せず一覧へ戻る", articles_path %>
+  </div>
+</section>

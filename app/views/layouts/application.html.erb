@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Code Shelf" %></title>
+    <title><%= content_for(:title) || "CodeShelf" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Code Shelf">
+    <meta name="application-name" content="CodeShelf">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -23,7 +23,42 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="cosmic-body">
+    <div class="cosmos" aria-hidden="true">
+      <div class="starfield starfield-one"></div>
+      <div class="starfield starfield-two"></div>
+      <div class="horizon"></div>
+    </div>
+
+    <header class="site-header">
+      <%= link_to articles_path, class: "brand" do %>
+        <span class="brand-mark">CS</span>
+        <span>
+          <strong>CodeShelf</strong>
+          <small>TECH ARTICLE UNIVERSE</small>
+        </span>
+      <% end %>
+
+      <nav class="site-nav" aria-label="メインメニュー">
+        <%= link_to "記事を探す", articles_path, class: "nav-link" %>
+        <%= link_to "記事を書く", new_article_path, class: "button button-primary" %>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <% if notice.present? %>
+        <div class="flash-notice" role="status">
+          <span class="flash-signal"></span>
+          <%= notice %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <footer class="site-footer">
+      <span>CodeShelf</span>
+      <span>Share the signal. Expand the knowledge.</span>
+    </footer>
   </body>
 </html>

@@ -1,10 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, "#{@article.title.presence || "記事"} | CodeShelf" %>
 
-<%= render @article %>
+<article class="article-detail">
+  <header class="article-detail-header">
+    <p class="eyebrow">ARTICLE TRANSMISSION</p>
+    <h1><%= @article.title.presence || "タイトル未設定" %></h1>
+    <div class="detail-meta">
+      <span>CodeShelf Author</span>
+      <time datetime="<%= @article.created_at.iso8601 %>"><%= @article.created_at.strftime("%Y.%m.%d") %></time>
+    </div>
+  </header>
 
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
+  <div class="article-body">
+    <%= simple_format(@article.body) %>
+  </div>
 
-  <%= button_to "Destroy this article", @article, method: :delete %>
-</div>
+  <footer class="detail-actions">
+    <%= link_to "一覧へ戻る", articles_path, class: "button button-ghost" %>
+    <%= link_to "編集する", edit_article_path(@article), class: "button button-outline" %>
+    <%= button_to "削除する", @article, method: :delete, class: "button button-danger", form: { data: { turbo_confirm: "この記事を削除しますか？" } } %>
+  </footer>
+</article>
