@@ -4,7 +4,7 @@
   "workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/app,type=bind",
   "workspaceFolder": "/home/vscode/app",
   "waitFor": "onCreateCommand",
-  "onCreateCommand": "gem install irb -N && gem install solargraph -v '0.59.2' -N",
+  "onCreateCommand": "gem install irb -N && gem install solargraph -v '0.59.2' -N && gem install rails -v '~> 8.1.0' -N",
   "postAttachCommand": {
     "Open terminal": "echo '準備完了'"
   },
