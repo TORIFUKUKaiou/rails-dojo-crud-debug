@@ -66,6 +66,7 @@ p {
     radial-gradient(circle, rgba(39, 222, 242, 0.65) 1px, transparent 1.5px);
   background-position: 12px 26px, 73px 91px;
   background-size: 128px 128px, 187px 187px;
+  animation: flowStarsOne 22s linear infinite, twinkleOne 5s ease-in-out infinite;
 }
 
 .starfield-two {
@@ -75,6 +76,7 @@ p {
     radial-gradient(circle, rgba(238, 78, 172, 0.75) 1px, transparent 1.5px);
   background-position: 30px 62px, 8px 16px;
   background-size: 273px 273px, 233px 233px;
+  animation: flowStarsTwo 45s linear infinite, twinkleTwo 8s ease-in-out infinite;
 }
 
 .horizon {
@@ -197,6 +199,7 @@ p {
   line-height: 1;
   color: #ffffff;
   text-shadow: 0 0 34px rgba(39, 222, 242, 0.16);
+  animation: title-glow 8s ease-in-out infinite;
 }
 
 .hero-lead {
@@ -244,7 +247,8 @@ p {
 }
 
 .button-primary:hover {
-  box-shadow: 0 13px 34px rgba(39, 222, 242, 0.42);
+  box-shadow: 0 13px 34px rgba(39, 222, 242, 0.45), 0 0 20px rgba(18, 203, 165, 0.25);
+  transform: translateY(-3px);
 }
 
 .button-ghost,
@@ -272,6 +276,7 @@ p {
   border-radius: 8px;
   background: rgba(9, 15, 36, 0.72);
   box-shadow: inset 0 0 36px rgba(39, 222, 242, 0.08), 0 24px 56px var(--shadow);
+  animation: signal-pulse 4s ease-in-out infinite;
 }
 
 .signal-display::before {
@@ -316,11 +321,11 @@ p {
   background: var(--magenta);
 }
 
-.signal-bars i:nth-child(1) { height: 10px; }
-.signal-bars i:nth-child(2) { height: 22px; }
-.signal-bars i:nth-child(3) { height: 16px; }
-.signal-bars i:nth-child(4) { height: 28px; }
-.signal-bars i:nth-child(5) { height: 13px; }
+.signal-bars i:nth-child(1) { height: 10px; animation: signal-bounce-1 1.5s ease-in-out infinite; animation-delay: -0.2s; }
+.signal-bars i:nth-child(2) { height: 22px; animation: signal-bounce-2 1.9s ease-in-out infinite; animation-delay: -0.6s; }
+.signal-bars i:nth-child(3) { height: 16px; animation: signal-bounce-3 1.4s ease-in-out infinite; animation-delay: -0.1s; }
+.signal-bars i:nth-child(4) { height: 28px; animation: signal-bounce-4 2.1s ease-in-out infinite; animation-delay: -0.8s; }
+.signal-bars i:nth-child(5) { height: 13px; animation: signal-bounce-5 1.7s ease-in-out infinite; animation-delay: -0.4s; }
 
 .articles-section {
   padding: 32px 0 24px;
@@ -358,9 +363,9 @@ p {
 }
 
 .article-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(39, 222, 242, 0.56);
-  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.32);
+  transform: translateY(-5px);
+  border-color: rgba(39, 222, 242, 0.65);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45), 0 0 25px rgba(39, 222, 242, 0.2);
 }
 
 .article-meta {
@@ -678,4 +683,116 @@ p {
   .article-body {
     padding: 24px 21px;
   }
+}
+
+/* Cosmic Animation Keyframes */
+@keyframes flowStarsOne {
+  from {
+    background-position: 12px 26px, 73px 91px;
+  }
+  to {
+    background-position: 140px 154px, 260px 278px;
+  }
+}
+
+@keyframes twinkleOne {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes flowStarsTwo {
+  from {
+    background-position: 30px 62px, 8px 16px;
+  }
+  to {
+    background-position: -243px 335px, -225px 249px;
+  }
+}
+
+@keyframes twinkleTwo {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes title-glow {
+  0%, 100% {
+    text-shadow: 0 0 34px rgba(39, 222, 242, 0.16), 0 0 15px rgba(39, 222, 242, 0.08);
+  }
+  50% {
+    text-shadow: 0 0 45px rgba(39, 222, 242, 0.35), 0 0 25px rgba(39, 222, 242, 0.15), 0 0 10px rgba(18, 203, 165, 0.1);
+  }
+}
+
+@keyframes signal-pulse {
+  0%, 100% {
+    border-color: rgba(39, 222, 242, 0.34);
+    box-shadow: inset 0 0 36px rgba(39, 222, 242, 0.08), 0 24px 56px var(--shadow), 0 0 15px rgba(39, 222, 242, 0.05);
+  }
+  50% {
+    border-color: rgba(39, 222, 242, 0.65);
+    box-shadow: inset 0 0 40px rgba(39, 222, 242, 0.15), 0 24px 56px var(--shadow), 0 0 30px rgba(39, 222, 242, 0.25);
+  }
+}
+
+@keyframes signal-bounce-1 {
+  0%, 100% { height: 10px; }
+  50% { height: 26px; }
+}
+
+@keyframes signal-bounce-2 {
+  0%, 100% { height: 22px; }
+  50% { height: 8px; }
+}
+
+@keyframes signal-bounce-3 {
+  0%, 100% { height: 16px; }
+  50% { height: 28px; }
+}
+
+@keyframes signal-bounce-4 {
+  0%, 100% { height: 28px; }
+  50% { height: 12px; }
+}
+
+@keyframes signal-bounce-5 {
+  0%, 100% { height: 13px; }
+  50% { height: 27px; }
+}
+
+/* Accessibility - Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .starfield-one,
+  .starfield-two,
+  .hero-copy h1,
+  .signal-display,
+  .signal-bars i {
+    animation: none !important;
+  }
+  .button,
+  .button-primary,
+  .article-card {
+    transition: none !important;
+    transform: none !important;
+  }
+  .button:hover,
+  .button-primary:hover,
+  .article-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: inherit !important;
+  }
+  /* Reset height of signal bars to static values */
+  .signal-bars i:nth-child(1) { height: 10px !important; }
+  .signal-bars i:nth-child(2) { height: 22px !important; }
+  .signal-bars i:nth-child(3) { height: 16px !important; }
+  .signal-bars i:nth-child(4) { height: 28px !important; }
+  .signal-bars i:nth-child(5) { height: 13px !important; }
 }
