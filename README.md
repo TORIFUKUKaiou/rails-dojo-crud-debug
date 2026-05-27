@@ -1,24 +1,7 @@
-# README
+# CodeShelf - CRUD デバッグ演習用アプリ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+このリポジトリの `main` ブランチは、Ruby on Rails の CRUD デバッグ演習のために意図的に壊してあります。エラー画面や画面の動きを確認しながら復旧してください。
 
-Things you may want to cover:
+教材: [第6週 Practice - 壊れた Article CRUD を復旧する](https://github.com/TORIFUKUKaiou/rails-dojo-year2-content/blob/main/06/practice.md)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+正常に動く完成版は `correct-crud` タグで管理しています。
