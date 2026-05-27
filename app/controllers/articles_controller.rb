@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :set_article, only: %i[ update destroy ]
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = Articles.all
   end
 
   # GET /articles/1 or /articles/1.json
@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
-    @article = Article.new
+    @article = Article.first!
   end
 
   # GET /articles/1/edit
@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
 
   # POST /articles or /articles.json
   def create
-    @article = Article.new(article_params)
+    @article = Article.new(artcle_params)
 
     respond_to do |format|
       if @article.save
@@ -37,8 +37,8 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
     respond_to do |format|
-      if @article.update(article_params)
-        format.html { redirect_to @article, notice: "記事を更新しました。最新の内容を発信しています。", status: :see_other }
+      if @article.update(title: article_params[:title])
+        format.html { redirect_to articles_path, notice: "記事を更新しました。最新の内容を発信しています。", status: :see_other }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit, status: :unprocessable_content }
@@ -49,8 +49,6 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
-    @article.destroy!
-
     respond_to do |format|
       format.html { redirect_to articles_path, notice: "記事を削除しました。", status: :see_other }
       format.json { head :no_content }
@@ -65,6 +63,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.expect(article: [ :title, :body ])
+      params.expect(article: [ :title ])
     end
 end

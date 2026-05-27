@@ -6,13 +6,13 @@
     <h1>CodeShelf</h1>
     <p class="hero-lead">Ruby と Rails の知識を記事にして発信する、技術記事共有スペース。</p>
     <div class="hero-actions">
-      <%= link_to "新しい記事を投稿", new_article_path, class: "button button-primary button-large" %>
+      <%= link_to "新しい記事を投稿", articles_path, class: "button button-primary button-large" %>
       <a class="button button-ghost button-large" href="#articles">記事を読む</a>
     </div>
   </div>
   <div class="signal-display" aria-hidden="true">
     <span class="signal-label">LIVE SIGNAL</span>
-    <strong><%= @articles.count.to_s.rjust(2, "0") %></strong>
+    <strong><%= @articles.counts.to_s.rjust(2, "0") %></strong>
     <small>ARTICLES ONLINE</small>
     <div class="signal-bars"><i></i><i></i><i></i><i></i><i></i></div>
   </div>
@@ -24,7 +24,7 @@
       <p class="eyebrow">LATEST LOGS</p>
       <h2>新着記事</h2>
     </div>
-    <%= link_to "投稿する", new_article_path, class: "button button-outline" %>
+    <%= link_to "投稿する", articles_path, class: "button button-outline" %>
   </div>
 
   <% if @articles.empty? %>
@@ -32,7 +32,7 @@
       <div class="empty-orbit"><span></span></div>
       <h3>まだ記事はありません</h3>
       <p>最初の技術記事を投稿して、知識の信号を送りましょう。</p>
-      <%= link_to "最初の記事を書く", new_article_path, class: "button button-primary" %>
+      <%= link_to "最初の記事を書く", articles_path, class: "button button-primary" %>
     </div>
   <% else %>
     <div class="article-grid">
